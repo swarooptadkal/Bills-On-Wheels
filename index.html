@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bills on Wheels</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .bill-container {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #bill-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #bill-table th, #bill-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    #bill-table th {
+      background-color: #f0f0f0;
+    }
+
+    #total {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    #total-amount {
+      color: #337ab7;
+    }
+
+    .pay-button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .pay-button:hover {
+      background-color: #3e8e41;
+    }
+
+    /* Add this style to center the title */
+    .centered-title {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2 class="centered-title">Bills on Wheels</h2>
+  <div class="bill-container">
+    <table id="bill-table">
+      <tr>
+        <th>SNO</th>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Rice - 1Kg</td>
+        <td>1</td>
+        <td>20</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Wheat - 1Kg</td>
+        <td>1</td>
+        <td>40</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Sugar - 1Kg</td>
+        <td>1</td>
+        <td>60</td>
+      </tr>
+    </table>
+    <p id="total" class="total">Total = <span id="total-amount">120</span></p>
+    <button class="pay-button">PAY NOW</button>
+  </div>
+
+  <script>
+    // Calculate total amount
+    let total = 0;
+    const rows = document.getElementById('bill-table').rows;
+    for (let i = 1; i < rows.length; i++) {
+      const price = parseInt(rows[i].cells[3].textContent);
+      total += price;
+    }
+    document.getElementById('total-amount').textContent = total;
+
+    // Add event listener to the pay button
+    document.querySelector('.pay-button').addEventListener('click', function() {
+      // Add your payment processing logic here
+      alert('Payment processing...');
+    });
+  </script>
+</body>
+</html>
